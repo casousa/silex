@@ -15,39 +15,36 @@ $app->register(new Silex\Provider\TwigServiceProvider(),array(
 	'twig.path' => __DIR__.'/../views'
 ));
 
-//Executado antes da rota
-$app->before(function(Request $request){
-	print("Antes das rotas.");
-});
-
 //Criação das rotas
 $app->get('/', function () use ($app) {
  	return 'Hello World';
 });
 
-$app->get('/users/{name}', function ($name) use ($app) {
-	if(is_null($name)){
-		return $app->redirect('/');
-	}
+$app->mount('/users', require __DIR__.'/../src/Users/Controller/IndexController.php');
 
- 	return $app['twig']->render('index.twig',array(
- 		'name' => $name, 
-	));
-})
-->value('name',NULL); //Caso não seja passado o nome, o valor default será NULL
+$app->run();
+
+
+/*
+ * COMANDOS COMENTADOS APENAS PARA POSTERIOR CONSULTA
+ */
+
+//Utilizado para alterar valor de retorno da função da rota
 //->convert('name', function($name){ // Converte o tipo do valor retornado
 	//return 	(int) $name; 
 //});
 
+//Executado antes da rota
+//$app->before(function(Request $request){
+	//print("Antes das rotas.");
+//});
 
 //Executado depois da rota
-$app->after(function(Request $request, Response $response){
-	print(" <br> Middleware After. <br>");
-});
+//$app->after(function(Request $request, Response $response){
+	//print(" <br> Middleware After. <br>");
+//});
 
 //Excutado após o response ser enviado para o browser
-$app->finish(function(Request $request, Response $response){
-	print(" <br>Vai ser executado depois que o response for enviado para o browser.");
-});
-
-$app->run();
+//$app->finish(function(Request $request, Response $response){
+	//print(" <br>Vai ser executado depois que o response for enviado para o browser.");
+//});

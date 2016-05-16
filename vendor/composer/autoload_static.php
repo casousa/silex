@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit0929cd792e99f9fe304c5e03b8bf1244
 {
     public static $prefixLengthsPsr4 = array (
+        'U' => 
+        array (
+            'Users\\' => 6,
+        ),
         'S' => 
         array (
             'Symfony\\Component\\Debug\\' => 24,
@@ -14,6 +18,10 @@ class ComposerStaticInit0929cd792e99f9fe304c5e03b8bf1244
     );
 
     public static $prefixDirsPsr4 = array (
+        'Users\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Users',
+        ),
         'Symfony\\Component\\Debug\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/debug',
