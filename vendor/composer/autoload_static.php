@@ -21,6 +21,13 @@ class ComposerStaticInit0929cd792e99f9fe304c5e03b8bf1244
     );
 
     public static $prefixesPsr0 = array (
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
         'S' => 
         array (
             'Symfony\\Component\\Routing\\' => 

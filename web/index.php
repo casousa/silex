@@ -12,7 +12,7 @@ $app = new Silex\Application();
 $app['debug'] = true;
 
 $app->register(new Silex\Provider\TwigServiceProvider(),array(
-	'twig.path' => __DIR__.'/views'
+	'twig.path' => __DIR__.'/../views'
 ));
 
 //Executado antes da rota
@@ -30,12 +30,14 @@ $app->get('/users/{name}', function ($name) use ($app) {
 		return $app->redirect('/');
 	}
 
- 	return 'Olá usuario: '.$name;
+ 	return $app['twig']->render('index.twig',array(
+ 		'name' => $name, 
+	));
 })
-->value('name',NULL) //Caso não seja passado o nome, o valor default será NULL
-->convert('name', function($name){ // Converte o tipo do valor retornado
-	return 	(int) $name; 
-});
+->value('name',NULL); //Caso não seja passado o nome, o valor default será NULL
+//->convert('name', function($name){ // Converte o tipo do valor retornado
+	//return 	(int) $name; 
+//});
 
 
 //Executado depois da rota
