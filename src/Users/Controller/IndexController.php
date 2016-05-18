@@ -1,16 +1,21 @@
 <?php
 
-$users = $app['controllers_factory'];
+namespace Users\Controller;
 
-$users->get('/{name}', function ($name) use ($app) {
-	if(is_null($name)){
-		return $app->redirect('/');
+use Silex\Application;
+
+class IndexController
+{
+	/**
+	* Responsável por reenderizar a view index
+	* 
+	* @param  Application $app Silex\Application
+	* @return Twig_Environment
+	*/
+	public function indexAction(Application $app)
+	{
+		return $app['twig']->render('index.twig',array(
+ 			'name' => $name, 
+		));
 	}
-
- 	return $app['twig']->render('index.twig',array(
- 		'name' => $name, 
-	));
-})
-->value('name',NULL); //Caso não seja passado o nome, o valor default será NULL
-
-return $users;
+}
