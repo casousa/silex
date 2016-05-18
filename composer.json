@@ -1,4 +1,14 @@
 {
+    "name": "Caio-Andrade/silex",
+    "description": "Projeto simples para estudo do Silex.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Caio Andrade",
+            "email": "caioandradedesousa@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
     "require": {
         "silex/silex": "1.2.5",
         "twig/twig": "^1.24"
